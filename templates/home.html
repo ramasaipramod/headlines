@@ -7,8 +7,11 @@
 </head>
 <body>
     <h1>{{channel}} headlines</h1>
-     <b>{{data[0]}}</b><br>
-     <i>{{data[1]}}</i><br>
-     <p>{{data[2]}}</p><br>
+    {% for article in articles %}
+     <b><a href="{{article.link}}" target="_blank">{{article.title}}</a></b><br>
+     <i>{{article.published}}</i><br>
+     <p>{{article.summary}}</p><br>
+     <hr>
+    {% endfor%}
 </body>
 </html>

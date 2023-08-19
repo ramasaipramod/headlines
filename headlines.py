@@ -12,9 +12,7 @@ FEED_XML = RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
 @app.route('/<publication>')
 def get_news(publication):
     feed = feedparser.parse(FEED_XML[publication])
-    article = feed['entries'][0]
-    data = [article.get('title'),article.get('published'),article.get('summary')]
-    return render_template('home.html',data=data,channel=publication)
+    return render_template('home.html',articles=feed['entries'],channel=publication)
 
 if __name__=='__main__':
     app.run(port=5000,debug=True)
