@@ -1,0 +1,102 @@
+/* Reset some default browser styles */
+
+@import "https://fonts.googleapis.com/css?family=Poppins";
+
+body{
+    background-color: rgb(244, 253, 254);
+}
+.empty{
+    width: 70%;
+}
+body, h1, h2, p, input, select {
+    font-family:'Poppins';
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.news-form {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.publisher-select,
+.currency-select {
+    padding: 8px;
+    font-size: 16px;
+}
+
+.news-heading{
+    font-size: 24px;
+    margin-bottom: 2px;
+
+}
+.block-heading {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.block {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.weather-info {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.weather-error {
+    margin-top: 10px;
+    color: red;
+    font-size: 14px;
+}
+
+.currency-rate {
+    font-size: 14px;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.article-list {
+    margin-top: 20px;
+}
+
+.article {
+    margin-bottom: 20px;
+}
+
+.article-title {
+    font-size: 20px;
+    color: #007bff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.article-info {
+    font-size: 14px;
+    color: #555;
+}

@@ -3,19 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEWS</title>
+    <title>Headlines</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favico.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>{{channel}} headlines</h1>
-    <form >
-        <input type="text" name="publication" placeholder="search">
-        <input type="submit" value="Submit">
-    </form>
-    {% for article in articles %}
-     <b><a href="{{article.link}}" target="_blank">{{article.title}}</a></b><br>
-     <i>{{article.published}}</i><br>
-     <p>{{article.summary}}</p><br>
-     <hr>
-    {% endfor%}
+    <div class="container">
+        <form class="news-form">
+            <div class="section">
+                <div class="publisher">
+                    <select name="publication" class="publisher-select">
+                        {% for publisher in channels %}
+                            <option value="{{ publisher }}" {% if publisher == channel %}selected{% endif %} >
+                                {{ publisher }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <h1 class="news-heading">Headlines</h1>
+                <div class="empty"></div>
+            </div>
+
+            <div class="section">
+                <div class="block">
+                    <h2 class="block-heading">Weather Report</h2>
+                    <input type="text" name="city" placeholder="Weather search" value="{{ city }}">
+                    {% if error == 0 %}
+                        <p class="weather-info">
+                            <b>CITY:</b> {{ weather.city }}<br>
+                            {{ weather.description }} | {{ weather.temperature }}
+                        </p>
+                    {% endif %}
+                    {% if error == 404 %}
+                        <p class="weather-error">Place not found!!!</p>
+                    {% endif %}
+                </div>
+
+                <div class="block">
+                    <h2 class="block-heading">Currency</h2>
+                    <label for="currency-from">From:</label>
+                    <select name="currency_from" id="currency-from" class="currency-select">
+                        {% for currency in currencies %}
+                            <option value="{{ currency }}" {% if currency == currency_from %}selected{% endif %}>
+                                {{ currency }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <label for="currency-to">To:</label>
+                    <select name="currency_to" id="currency-to" class="currency-select">
+                        {% for currency in currencies %}
+                            <option value="{{ currency }}" {% if currency == currency_to %}selected{% endif %}>
+                                {{ currency }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <p class="currency-rate">1 {{ currency_from }} = {{ currency_to }} {{ rate }}</p>
+                </div>
+            </div>
+
+            <input type="submit" value="Submit" class="submit-button">
+        </form>
+
+        <div class="article-list">
+            {% for article in articles %}
+                <div class="article">
+                    <a href="{{ article.link }}" target="_blank" class="article-title">{{ article.title }}</a>
+                    <p class="article-info">
+                        <i>{{ article.published }}</i><br>
+                        {{ article.summary }}
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>
